@@ -1,12 +1,13 @@
-html {
+ html, body, #root, .start-page {
+  margin: 0;
   height: 100%;
-}
-
-body, #root, .start-page {
-  height: inherit;
 }
 
 .start-page {
   display: grid;
-  grid: 1fr/ 1fr;
+  grid: 1fr/ 320px 1fr;
+}
+
+h2 {
+  margin: 0;
 }

@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import { Router, browserHistory, Route } from 'react-router';
-import userMainProfile from './components/userMainProfile/userMainProfile';
+import UserMainProfile from './components/userMainProfile/userMainProfile';
+import Game from './components/game/Game'
 import './App.css';
 
 class App extends Component {
     render() {
         return (
             <Router history={browserHistory}>
-                <Route path="/" component={userMainProfile}/>
+                <Route path="/" component={UserMainProfile}/>
+                <Route path="/game" component={Game}/>
             </Router>
         );
     }
