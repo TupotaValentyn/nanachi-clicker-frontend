@@ -2,7 +2,6 @@ import React from 'react';
 import socketConnection from '../../services/socketConnection'
 
 const userInfoPanel = () => {
-    console.log();
     return (
         <ul>
             <li>content 1</li>

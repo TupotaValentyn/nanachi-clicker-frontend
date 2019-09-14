@@ -1,9 +1,11 @@
 import React from 'react';
 import UserInfoPanel from '../userInfoPanel/userInfoPanel'
+import './userMainProfile.css';
+
 
 const UserMainProfile = () => {
     return (
-        <div>
+        <div className='start-page'>
             <UserInfoPanel />
         </div>
     )

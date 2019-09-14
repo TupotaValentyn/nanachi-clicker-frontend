@@ -1,8 +1,9 @@
 import React from 'react';
 
-const connect = new WebSocket('http://127.0.0.1:8080');
 
 const connection = () => {
+    const connect = new WebSocket('http://127.0.0.1:8080');
+
     connect.onopen(event => {
         console.log('nache pashe');
     });
