@@ -1,18 +1,19 @@
-import React, {Component} from 'react';
+import React  from "react";
 import { Router, browserHistory, Route } from 'react-router';
 import UserMainProfile from './components/userMainProfile/userMainProfile';
 import Game from './components/game/Game'
 import './App.css';
 
-class App extends Component {
-    render() {
-        return (
-            <Router history={browserHistory}>
-                <Route path="/" component={UserMainProfile}/>
-                <Route path="/game" component={Game}/>
-            </Router>
-        );
-    }
-}
+
+const App = () => {
+
+    return (
+        <Router history={browserHistory}>
+            <Route path="/" component={UserMainProfile}/>
+            <Route path="/game" component={Game}/>
+        </Router>
+    );
+
+};
 
 export default App;
