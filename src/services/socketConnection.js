@@ -1,13 +1,17 @@
 import React from 'react';
-import socketIOClient from "socket.io-client";
+import openSocket from 'socket.io-client';
+
 
 const connection = () => {
-    const endpoint = 'http://127.0.0.1:8080';
-    const socket = socketIOClient(endpoint);
+    const endpoint = 'http://localhost:8080/socket.io/';
+    const socket = openSocket(endpoint);
     let request = null;
-    socket.on('FromApi', data => {
-        request = data;
+    socket.on('connected', data => {
+        console.log('connected', data)
     })
+
+    socket.on('timer', timestamp => console.log("nanachi"));
+    socket.emit('msg', "sasat");
 };
 
 
