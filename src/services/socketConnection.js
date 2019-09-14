@@ -1,17 +1,18 @@
 import React from 'react';
-import openSocket from 'socket.io-client';
+
 
 
 const connection = () => {
-    const endpoint = 'http://localhost:8080/socket.io/';
-    const socket = openSocket(endpoint);
-    let request = null;
-    socket.on('connected', data => {
-        console.log('connected', data)
-    })
+    const connect = new WebSocket('ws://localhost:8080/ws');
+    connect.onmessage = function(e){ console.log(e.data); };
+    // connect.onopen = () => connect.send(JSON.stringify({'type': 'message', 'value': 'hi'}));
+    // connect.onopen(event => {
+    //     console.log('nache pashe');
+    // });
 
-    socket.on('timer', timestamp => console.log("nanachi"));
-    socket.emit('msg', "sasat");
+    // connect.onmessage(event => {
+    //     console.log(event);
+    // })
 };
 
 
