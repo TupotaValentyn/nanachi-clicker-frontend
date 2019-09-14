@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router";
+import connection from '../../services/socketConnection'
 
 const userInfoPanel = () => {
     return (
@@ -12,6 +13,9 @@ const userInfoPanel = () => {
             <Link to='/game' onlyActiveOnIndex>
                 Game
             </Link>
+            <button onClick={() => connection()}>
+                Socket
+            </button>
 
         </ul>
     )

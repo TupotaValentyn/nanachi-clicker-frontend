@@ -1,3 +1,12 @@
+:root {
+  --dark-color: #111;
+  --day-color: #ddd;
+
+  --primary-color: pink;
+}
+
+
+
  html, body, #root, .start-page {
   margin: 0;
   height: 100%;
@@ -10,4 +19,10 @@
 
 h2 {
   margin: 0;
+}
+
+body {
+  background: var(--day-color);
+  color: var(--dark-color);
+  user-select: none;
 }
