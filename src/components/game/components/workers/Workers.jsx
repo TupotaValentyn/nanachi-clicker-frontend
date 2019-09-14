@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Workers = () => {
-    const workers = ['in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in', 'in'];
+    const workers = ['in', 'in', 'in', 'in', 'in', 'in'];
 
     return (
         <div className='workers'>

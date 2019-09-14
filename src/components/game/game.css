@@ -49,18 +49,30 @@
     border: 1px solid green;
     grid-row: 2;
     flex: 1;
-    display: grid;
+    display: flex;
     grid-gap: 10px;
     height: 70px;
 }
 
+.worker:first-child,
+.worker:last-child {
+    margin: 0;
+}
+
 .worker:first-child {
+    margin: 0 5px 0 0;
+}
+
+.worker:last-child {
+    margin: 0 0 0 5px;
 }
 
 .worker {
     height: 70px;
     background: #000;
     grid-row: 1;
+    width: calc(10% - 10px);
+    margin: 0 5px;
 }
 
 .switch {
