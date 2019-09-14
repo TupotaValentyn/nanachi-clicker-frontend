@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const connect = new WebSocket('http://127.0.0.1:8080');
 
-const connection = () => {
-    connect.onopen(event => {
-        console.log('nache pashe');
-    });
+const GAME_TYPE = '';
+const PLAYER = '';
 
-    connect.onmessage(event => {
-        console.log(event);
-    })
+const Connection = () => {
+    const connect = new WebSocket('ws://192.241.128.184:8080/ws');
+
+    connect.onmessage = function(e){
+        console.log(e.data)
+    };
+
+    return false;
 };
 
 
-export default connection;
+export default Connection;
