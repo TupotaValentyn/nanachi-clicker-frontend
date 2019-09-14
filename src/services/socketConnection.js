@@ -1,12 +1,14 @@
 import React from 'react';
-import socketIOClient from "socket.io-client";
+
+const connect = new WebSocket('http://127.0.0.1:8080');
 
 const connection = () => {
-    const endpoint = 'http://127.0.0.1:8080';
-    const socket = socketIOClient(endpoint);
-    let request = null;
-    socket.on('FromApi', data => {
-        request = data;
+    connect.onopen(event => {
+        console.log('nache pashe');
+    });
+
+    connect.onmessage(event => {
+        console.log(event);
     })
 };
 
