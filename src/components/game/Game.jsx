@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import UserControlDisplay from './components/userControlDisplay/UserControlDisplay';
 import Workers from "./components/workers/Workers";
 import SwitchTechnology from "./components/switch-technology/SwitchTechnology";
+import { ContextOne } from "../../ContextOne";
 
 import './game.css';
-
 
 const Game = () => {
 
     const [count, setCount] = useState(0);
+    let {state, dispatch} = useContext(ContextOne);
+
+    let updateUser = () => {
+        dispatch({type: 'set-user', payload: Date.now()});
+    };
 
     return (<div className='game'>
         <div className="holst-clicker" onClick={() => setCount(count + 1 )}>
@@ -21,6 +26,7 @@ const Game = () => {
             <Workers />
             <UserControlDisplay />
             <SwitchTechnology />
+            <button onClick={() => {updateUser();console.log(state)}}>sasat</button>
         </div>
     </div>)
 };

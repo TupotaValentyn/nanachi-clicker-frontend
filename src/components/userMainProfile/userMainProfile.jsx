@@ -1,5 +1,5 @@
 import React from 'react';
-import UserInfoPanel from '../userInfoPanel/userInfoPanel'
+import UserInfoPanel from '../userInfoPanel/UserInfoPanel'
 import './userMainProfile.css';
 
 
