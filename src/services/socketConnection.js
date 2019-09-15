@@ -1,4 +1,3 @@
-import React, { useState, useContext } from 'react';
 import { Subject } from "rxjs";
 
 
@@ -7,6 +6,8 @@ let PLAYER = '';
 let connect = null;
 let connect2 = null;
 let interval = null;
+let userID = null;
+export const sub$ = new Subject(null);
 let clicks = {'frontend': 0, 'backend': 0};
 
 export const addClicks = (v) => {
@@ -24,6 +25,8 @@ const Connection = () => {
         console.log(data)
         switch (data['type']) {
             case 'game_player':
+                console.log(data['value'].ID)
+                userID = data['value'].ID
                 intervalSend()
                 break
         }
@@ -31,8 +34,9 @@ const Connection = () => {
     };
 
     connect2.onmessage = function(e) {
-
+        
         let data = JSON.parse(e.data)
+        sub$.next(data);
         console.log(data)
         switch (data['type']) {
             case 'game_player':
@@ -52,9 +56,7 @@ const Connection = () => {
         clearInterval(interval);
     }
 
-
-export let connect = null;
-export const sub$ = new Subject(null);
+}
 
 export const send = (msg) => {
     console.log("Sended: " + msg['value'])
@@ -64,37 +66,11 @@ export const send = (msg) => {
 export const intervalSend = () => {
     console.log('game_player');
     interval = setInterval(() => {
-        send({"type": "clicks", "value": clicks})
+        if (clicks['frontend'] != 0 || clicks['backend'] != 0)
+        send({"type": "clicks", "value": {...clicks, 'userID': userID}})
         clicks = {'frontend': 0, 'backend': 0}
     }, 1000)
 }
 
-const Connection = () => {
-
-    connect = new WebSocket('ws://192.241.128.184:8080/ws');
-
-    connect.onmessage = function (e) {
-        sub$.next(JSON.parse(e.data));
-        connect.onmessage = function (e) {
-
-            let data = JSON.parse(e.data);
-            console.log(data);
-            switch (data['type']) {
-                case 'game_player':
-                    intervalSend();
-                    break
-            }
-        };
-
-        connect.onclose = () => {
-            console.log("CLOSED");
-            clearInterval(interval);
-        };
-
-
-        return false;
-    };
-
-};
 
 export default Connection;

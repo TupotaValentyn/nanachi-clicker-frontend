@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router";
-import { sub$} from '../../services/socketConnection'
+import connection, { sub$ } from '../../services/socketConnection';
 import { ContextOne } from "../../ContextOne";
 
 const UserInfoPanel = () => {
@@ -30,9 +30,15 @@ const UserInfoPanel = () => {
             <li>content 4</li>
             <li>content 5</li>
             <Link to='/game' onlyActiveOnIndex>
-                Game
+                 <div onClick={() => {
+                connection()
+            }}>
+                 Game
+                 </div>
+                 
             </Link>
             <button onClick={() => {
+                connection()
             }}>
                 Socket
             </button>
